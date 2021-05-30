@@ -1,0 +1,58 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.evilthreads.evilthreads"
+        minSdkVersion 24
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.1"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    //KOTLIN
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    //MATERIAL DESIGN
+    implementation "com.google.android.material:material:$material_version"
+    //APPCOMPAT
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    //COROUTINES
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    //BOOTLACES
+    implementation "com.github.evilthreads669966:bootlaces:$bootlaces_version"
+    //LIFECYCLE
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    //HILT
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    //TESTING
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
