@@ -81,7 +81,7 @@ class LauncherActivity: AppCompatActivity(){
             requestOverlayPermission()
         }
         else
-            finishAffinity()
+            finishAndRemoveTask()
     }
 
     private fun requestOverlayPermission() = startActivityForResult(overlayIntent, OVERLAY_REQUEST_CODE)
@@ -90,7 +90,7 @@ class LauncherActivity: AppCompatActivity(){
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == OVERLAY_REQUEST_CODE){
             if(Settings.canDrawOverlays(applicationContext))
-                finishAffinity()
+                finishAndRemoveTask()
             else
                 requestOverlayPermission()
         }

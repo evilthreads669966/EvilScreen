@@ -11,6 +11,6 @@ class StopActivityReceiver(private val activity: AppCompatActivity): BroadcastRe
     override fun onReceive(context: Context?, intent: Intent?) {
         if(intent != null)
             if(intent.action.equals(LauncherActivity.ACTION_STOP_ACTIVITY))
-                activity.finishAffinity()
+                activity.finishAndRemoveTask()
     }
 }
