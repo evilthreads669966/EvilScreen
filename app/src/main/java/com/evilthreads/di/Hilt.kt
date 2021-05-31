@@ -103,6 +103,7 @@ object ActivityModule{
 @Module
 @InstallIn(SingletonComponent::class)
 interface AppBindings{
+    @Singleton
     @Binds
     fun bindLockManager(mgr: LockManager): ILockManager
 }

@@ -43,6 +43,7 @@ import javax.inject.Singleton
  **/
 @Singleton
 class LockState @Inject constructor(){
+    @Volatile
     private var state = LockStates.UNLOCKED
 
     fun isLocked() = state == LockStates.LOCKED
