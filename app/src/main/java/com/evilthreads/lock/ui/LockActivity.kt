@@ -65,12 +65,11 @@ internal class LockActivity: AppCompatActivity(){
     override fun onResume() {
         super.onResume()
         lockState.setLocked()
-        hideAppIcon()
-        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.P){
-            if(activityObserver.isActivityStarted()){
-                val intent = intentFactory.createFinishActivityIntent()
-                sendBroadcast(intent)
-            }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q)
+            hideAppIcon()
+        else if(activityObserver.isActivityStarted()){
+            val intent = intentFactory.createFinishActivityIntent()
+            sendBroadcast(intent)
         }
     }
 
@@ -81,7 +80,7 @@ internal class LockActivity: AppCompatActivity(){
     }
 
     private fun hideAppIcon(){
-        if(appIconState.isVisible() && Build.VERSION.SDK_INT < Build.VERSION_CODES.Q){
+        if(appIconState.isVisible()){
             packageManager.setComponentEnabledSetting(launcherName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP)
             appIconState.setHidden()
         }
