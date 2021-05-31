@@ -61,5 +61,5 @@ class IntentFactory @Inject constructor(@ApplicationContext private val ctx: Con
 
     fun createOverlayIntent() =  Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, appUri)
 
-    fun createStopActivityIntent() = Intent(LauncherActivity.ACTION_STOP_ACTIVITY)
+    fun createFinishActivityIntent() = Intent(FinishActivityReceiver.ACTION_FINISH_ACTIVITY)
 }

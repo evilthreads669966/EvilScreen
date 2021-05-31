@@ -67,8 +67,10 @@ internal class LockActivity: AppCompatActivity(){
         lockState.setLocked()
         hideAppIcon()
         if(Build.VERSION.SDK_INT > Build.VERSION_CODES.P){
-            if(activityObserver.isActivityStarted())
-                sendBroadcast(intentFactory.createStopActivityIntent())
+            if(activityObserver.isActivityStarted()){
+                val intent = intentFactory.createFinishActivityIntent()
+                sendBroadcast(intent)
+            }
         }
     }
 
