@@ -54,7 +54,7 @@ import javax.inject.Inject
  **/
 @AndroidEntryPoint
 class LauncherActivity: AppCompatActivity(){
-    private val OVERLAY_REQUEST_CODE = 666
+    private val overlay_request_code = 666
     @Inject
     lateinit var receiver: BroadcastReceiver
     @Inject
@@ -80,11 +80,11 @@ class LauncherActivity: AppCompatActivity(){
             finishAndRemoveTask()
     }
 
-    private fun requestOverlayPermission() = startActivityForResult(overlayIntent, OVERLAY_REQUEST_CODE)
+    private fun requestOverlayPermission() = startActivityForResult(overlayIntent, overlay_request_code)
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == OVERLAY_REQUEST_CODE){
+        if(requestCode == overlay_request_code){
             if(Settings.canDrawOverlays(applicationContext))
                 finishAndRemoveTask()
             else
