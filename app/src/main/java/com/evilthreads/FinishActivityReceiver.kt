@@ -19,7 +19,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import com.evilthreads.ui.LauncherActivity
 
 /*
             (   (                ) (             (     (
@@ -46,10 +45,14 @@ import com.evilthreads.ui.LauncherActivity
  * @email evilthreads669966@gmail.com
  * @date 05/29/21
  **/
-class StopActivityReceiver(private val activity: AppCompatActivity): BroadcastReceiver(){
+class FinishActivityReceiver(private val activity: AppCompatActivity): BroadcastReceiver(){
+    companion object{
+        const val ACTION_FINISH_ACTIVITY = "ACTION_FINISH_ACTIVITY"
+    }
+
     override fun onReceive(context: Context?, intent: Intent?) {
         if(intent != null)
-            if(intent.action.equals(LauncherActivity.ACTION_STOP_ACTIVITY))
+            if(intent.action.equals(ACTION_FINISH_ACTIVITY))
                 activity.finishAndRemoveTask()
     }
 }

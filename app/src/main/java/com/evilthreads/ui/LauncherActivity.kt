@@ -54,6 +54,7 @@ import javax.inject.Inject
  **/
 @AndroidEntryPoint
 class LauncherActivity: AppCompatActivity(){
+    private val OVERLAY_REQUEST_CODE = 666
     @Inject
     lateinit var receiver: BroadcastReceiver
     @Inject
@@ -66,11 +67,6 @@ class LauncherActivity: AppCompatActivity(){
     lateinit var filter: IntentFilter
     @Inject
     lateinit var observer: ActivityObserver
-
-    companion object{
-        private const val OVERLAY_REQUEST_CODE = 666
-        const val ACTION_STOP_ACTIVITY = "ACTION_STOP_ACTIVITY"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

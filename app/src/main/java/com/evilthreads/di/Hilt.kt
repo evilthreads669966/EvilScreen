@@ -91,13 +91,13 @@ object AppModule{
 @InstallIn(ActivityComponent::class)
 object ActivityModule{
     @Provides
-    fun provideIntentFilter(): IntentFilter = IntentFilter(LauncherActivity.ACTION_STOP_ACTIVITY)
+    fun provideIntentFilter(): IntentFilter = IntentFilter(FinishActivityReceiver.ACTION_FINISH_ACTIVITY)
 
     @Provides
     fun provideOverlayIntent(intentFactory: IntentFactory): Intent = intentFactory.createOverlayIntent()
 
     @Provides
-    fun provideReceiver(@ActivityContext ctx: Context): BroadcastReceiver = StopActivityReceiver(ctx as AppCompatActivity)
+    fun provideReceiver(@ActivityContext ctx: Context): BroadcastReceiver = FinishActivityReceiver(ctx as AppCompatActivity)
 }
 
 @Module
