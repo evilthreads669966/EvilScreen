@@ -46,7 +46,7 @@ class LockState private constructor(){
 
     companion object{
         @Volatile
-        var INSTANCE: LockState? = null
+        private var INSTANCE: LockState? = null
 
         fun getInstance(): LockState{
             return INSTANCE ?: synchronized(this){
