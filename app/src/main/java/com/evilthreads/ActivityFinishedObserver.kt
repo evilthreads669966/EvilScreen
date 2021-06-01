@@ -44,18 +44,18 @@ import javax.inject.Singleton
  * @date 05/29/21
  **/
 @Singleton
-class ActivityObserver @Inject constructor(): LifecycleObserver {
-    private var activityStarted: Boolean = false
+class ActivityFinishedObserver @Inject constructor(): LifecycleObserver {
+    private var finished: Boolean = false
 
     @OnLifecycleEvent(Event.ON_CREATE)
-    private fun setStarted(){
-        activityStarted = true
+    private fun created(){
+        finished = false
     }
 
     @OnLifecycleEvent(Event.ON_DESTROY)
-    private fun setStopped(){
-        activityStarted = false
+    private fun destroyed(){
+        finished = true
     }
 
-    fun isActivityStarted() = activityStarted
+    fun isFinished() = finished
 }

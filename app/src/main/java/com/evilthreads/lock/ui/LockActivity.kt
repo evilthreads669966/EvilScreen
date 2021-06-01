@@ -18,7 +18,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import com.evilthreads.IntentFactory
-import com.evilthreads.ActivityObserver
+import com.evilthreads.ActivityFinishedObserver
 import com.evilthreads.lock.AppIconState
 import com.evilthreads.lock.LockState
 import dagger.hilt.android.AndroidEntryPoint
@@ -60,7 +60,7 @@ internal class LockActivity: AppCompatActivity(){
     @Inject
     lateinit var intentFactory: IntentFactory
     @Inject
-    lateinit var activityObserver: ActivityObserver
+    lateinit var activityFinishedObserver: ActivityFinishedObserver
 
     override fun onResume() {
         super.onResume()
@@ -68,7 +68,7 @@ internal class LockActivity: AppCompatActivity(){
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q)
             hideAppIcon()
         else
-            if(activityObserver.isActivityStarted()){
+            if(!activityFinishedObserver.isFinished()){
                 val intent = intentFactory.createFinishActivityIntent()
                 sendBroadcast(intent)
             }

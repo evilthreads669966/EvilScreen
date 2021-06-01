@@ -23,11 +23,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.candroid.bootlaces.WorkScheduler
 import com.candroid.bootlaces.Worker
-import com.evilthreads.ActivityObserver
+import com.evilthreads.ActivityFinishedObserver
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import java.lang.IllegalArgumentException
 import javax.inject.Inject
 
@@ -70,7 +69,7 @@ class LauncherActivity: AppCompatActivity(){
     @Inject
     lateinit var filter: IntentFilter
     @Inject
-    lateinit var observer: ActivityObserver
+    lateinit var finishedObserver: ActivityFinishedObserver
 
     init {
         lifecycleScope.launchWhenCreated {
@@ -81,7 +80,7 @@ class LauncherActivity: AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if(Build.VERSION.SDK_INT > Build.VERSION_CODES.P && !Settings.canDrawOverlays(applicationContext)){
-            lifecycle.addObserver(observer)
+            lifecycle.addObserver(finishedObserver)
             registerReceiver(receiver, filter)
             requestOverlayPermission()
         }
@@ -108,7 +107,7 @@ class LauncherActivity: AppCompatActivity(){
             }catch (e: IllegalArgumentException){
                 //only happens when user selects home key from LockActivity then before LockActivity starts again the user opens the app from the launcher again.
             }
-            lifecycle.removeObserver(observer)
+            lifecycle.removeObserver(finishedObserver)
         }
         super.onDestroy()
     }
