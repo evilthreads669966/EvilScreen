@@ -54,6 +54,7 @@ class LockManager @Inject constructor(intentFactory: IntentFactory, @Application
     private val broadcastIntent: Intent = intentFactory.createBroadcastIntent()
 
     companion object {
+        @Volatile
         private var INSTANCE: ILockManager? = null
        
         fun getInstance(ctx: Context): ILockManager {
