@@ -41,10 +41,21 @@ import javax.inject.Singleton
  * @email evilthreads669966@gmail.com
  * @date 05/28/21
  **/
-@Singleton
-class LockState @Inject constructor(){
-    @Volatile
+class LockState private constructor(){
     private var state = LockStates.UNLOCKED
+
+    companion object{
+        @Volatile
+        var INSTANCE: LockState? = null
+
+        fun getInstance(): LockState{
+            return INSTANCE ?: synchronized(this){
+                val newInstance = LockState()
+                INSTANCE = newInstance
+                INSTANCE!!
+            }
+        }
+    }
 
     fun isLocked() = state == LockStates.LOCKED
 
