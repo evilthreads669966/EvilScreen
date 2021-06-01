@@ -64,10 +64,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule{
-    @Singleton
-    @Provides
-    fun provideWorker(): Worker = LockWorker()
-    
     @Provides
     fun provideLauncherComponent(): Class<*> = LauncherActivity::class.java
 
@@ -102,6 +98,9 @@ object ActivityModule{
 
     @Provides
     fun provideReceiver(@ActivityContext ctx: Context): BroadcastReceiver = FinishActivityReceiver(ctx as AppCompatActivity)
+
+    @Provides
+    fun provideWorker(): Worker = LockWorker()
 }
 
 @Module
