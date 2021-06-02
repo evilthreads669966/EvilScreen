@@ -19,7 +19,6 @@ import android.net.Uri
 import android.provider.Settings
 import com.evilthreads.lock.LockAction
 import com.evilthreads.lock.ui.LockActivity
-import com.evilthreads.ui.LauncherActivity
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton

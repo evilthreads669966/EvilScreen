@@ -13,11 +13,12 @@ See the License for the specific language governing permissions and
 limitations under the License.*/
 package com.evilthreads
 
-import androidx.lifecycle.Lifecycle.*
+import androidx.lifecycle.Lifecycle.Event
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import javax.inject.Inject
 import javax.inject.Singleton
+
 /*
             (   (                ) (             (     (
             )\ ))\ )    *   ) ( /( )\ )     (    )\ )  )\ )

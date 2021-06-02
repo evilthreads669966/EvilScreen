@@ -17,12 +17,10 @@ import android.content.ComponentName
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
-import com.evilthreads.IntentFactory
 import com.evilthreads.ActivityFinishedObserver
+import com.evilthreads.IntentFactory
 import com.evilthreads.lock.AppIconState
 import com.evilthreads.lock.ILockManager
-import com.evilthreads.lock.LockManager
-import com.evilthreads.lock.LockState
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

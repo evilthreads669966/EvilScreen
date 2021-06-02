@@ -22,7 +22,6 @@ import com.candroid.bootlaces.Worker
 import com.evilthreads.lock.ILockManager
 import com.evilthreads.lock.LockAction
 import com.evilthreads.lock.LockManager
-import com.evilthreads.lock.LockState
 import com.evilthreads.lock.background.LockWorker
 import com.evilthreads.ui.LauncherActivity
 import dagger.Binds
