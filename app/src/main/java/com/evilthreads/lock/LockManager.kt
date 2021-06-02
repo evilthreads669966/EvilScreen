@@ -49,7 +49,7 @@ import javax.inject.Inject
  * @email evilthreads669966@gmail.com
  * @date 05/28/21
  **/
-class LockManagerImpl @Inject constructor(intentFactory: IntentFactory, @ApplicationContext private val ctx: Context, private val powerMgr: PowerManager, private val keyguardMgr: KeyguardManager, private val lockState: LockState): LockManager {
+class LockManagerImpl @Inject constructor(intentFactory: IntentFactory, @ApplicationContext private val ctx: Context, private val powerMgr: PowerManager, private val keyguardMgr: KeyguardManager, @get:Synchronized private val lockState: LockState): LockManager {
     private val activityIntent: Intent = intentFactory.createActivityIntent()
     private val broadcastIntent: Intent = intentFactory.createBroadcastIntent()
 
