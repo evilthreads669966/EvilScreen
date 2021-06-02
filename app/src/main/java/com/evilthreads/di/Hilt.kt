@@ -66,9 +66,6 @@ import javax.inject.Singleton
 object AppModule{
     @Provides
     fun provideLauncherComponent(): Class<*> = LauncherActivity::class.java
-
-    @Provides
-    fun provideLockState(): LockState = LockState.getInstance()
    
     @Singleton
     @Provides

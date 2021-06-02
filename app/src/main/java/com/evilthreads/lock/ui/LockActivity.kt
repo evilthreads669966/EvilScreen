@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.evilthreads.IntentFactory
 import com.evilthreads.ActivityFinishedObserver
 import com.evilthreads.lock.AppIconState
+import com.evilthreads.lock.LockManager
 import com.evilthreads.lock.LockState
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -54,7 +55,7 @@ internal class LockActivity: AppCompatActivity(){
     @Inject
     lateinit var launcherName: ComponentName
     @Inject
-    lateinit var lockState: LockState
+    lateinit var lockMgr: LockManager
     @Inject
     lateinit var appIconState: AppIconState
     @Inject
@@ -64,7 +65,7 @@ internal class LockActivity: AppCompatActivity(){
 
     override fun onResume() {
         super.onResume()
-        lockState.setLocked()
+        lockMgr.setLocked()
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q)
             hideAppIcon()
         else
@@ -76,7 +77,7 @@ internal class LockActivity: AppCompatActivity(){
 
     override fun onPause() {
         super.onPause()
-        lockState.setUnlocked()
+        lockMgr.setUnlocked()
         finishAndRemoveTask()
     }
 

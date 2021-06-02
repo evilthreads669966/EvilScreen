@@ -84,6 +84,10 @@ class LockManager @Inject constructor(intentFactory: IntentFactory, @Application
         if(powerMgr.isInteractive)
             ctx.sendBroadcast(broadcastIntent)
     }
+
+    override fun setLocked() = lockState.setLocked()
+
+    override fun setUnlocked() = lockState.setUnlocked()
 }
 
 interface ILockManager {
@@ -92,4 +96,8 @@ interface ILockManager {
     fun lock()
 
     suspend fun broadcast()
+
+    fun setLocked()
+
+    fun setUnlocked()
 }

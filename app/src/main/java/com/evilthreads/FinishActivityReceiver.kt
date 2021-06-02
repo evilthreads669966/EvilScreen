@@ -15,10 +15,10 @@ limitations under the License.
 */
 package com.evilthreads
 
-import android.app.Activity
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 
 /*
             (   (                ) (             (     (
@@ -45,7 +45,7 @@ import android.content.Intent
  * @email evilthreads669966@gmail.com
  * @date 05/29/21
  **/
-class FinishActivityReceiver(private val activity: Activity): BroadcastReceiver(){
+class FinishActivityReceiver(private val activity: AppCompatActivity): BroadcastReceiver(){
     companion object{
         const val ACTION_FINISH_ACTIVITY = "ACTION_FINISH_ACTIVITY"
     }
