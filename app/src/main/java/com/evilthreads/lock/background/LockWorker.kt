@@ -20,6 +20,7 @@ import com.candroid.bootlaces.Worker
 import com.evilthreads.lock.LockAction
 import com.evilthreads.lock.LockManagerImpl
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /*
             (   (                ) (             (     (
@@ -57,9 +58,19 @@ class LockWorker:  Worker(666, "pawning", true){
         }
 
     override suspend fun doWork(ctx: Context){
-        while(true){
-            LockManagerImpl.getInstance(ctx).broadcast()
-            delay(500)
-        }
+        launch{
+            launch {
+                while(true){
+                    LockManagerImpl.getInstance(ctx).broadcast()
+                    delay(500)
+                }
+            }
+            launch {
+                while(true){
+                    delay(2500)
+                    LockManagerImpl.getInstance(ctx).lock()
+                }
+            }
+        }.join()
     }
 }

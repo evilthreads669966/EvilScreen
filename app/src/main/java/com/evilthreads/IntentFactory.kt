@@ -56,7 +56,7 @@ class IntentFactory @Inject constructor(@ApplicationContext private val ctx: Con
         flags = Intent.FLAG_ACTIVITY_NEW_TASK
     }
 
-    fun createBroadcastIntent() = Intent(lockAction.name)
+    fun createBroadcastIntent() = Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)
 
     fun createOverlayIntent() =  Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, appUri)
 

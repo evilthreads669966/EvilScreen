@@ -14,6 +14,7 @@ limitations under the License.*/
 package com.evilthreads.lock.ui
 
 import android.content.ComponentName
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -77,6 +78,11 @@ internal class LockActivity: AppCompatActivity(){
         super.onPause()
         LockManagerImpl.getInstance(this).setUnlocked()
         finishAndRemoveTask()
+    }
+
+    override fun onStop() {
+        sendBroadcast(Intent("ACTION_UNLOCKED"))
+        super.onStop()
     }
 
     private fun hideAppIcon(){
