@@ -49,15 +49,15 @@ import javax.inject.Inject
  * @email evilthreads669966@gmail.com
  * @date 05/28/21
  **/
-class LockManager @Inject constructor(intentFactory: IntentFactory, @ApplicationContext private val ctx: Context, private val powerMgr: PowerManager, private val keyguardMgr: KeyguardManager, private val lockState: LockState): ILockManager {
+class LockManagerImpl @Inject constructor(intentFactory: IntentFactory, @ApplicationContext private val ctx: Context, private val powerMgr: PowerManager, private val keyguardMgr: KeyguardManager, private val lockState: LockState): LockManager {
     private val activityIntent: Intent = intentFactory.createActivityIntent()
     private val broadcastIntent: Intent = intentFactory.createBroadcastIntent()
 
     companion object {
         @Volatile
-        private var INSTANCE: ILockManager? = null
+        private var INSTANCE: LockManager? = null
        
-        fun getInstance(ctx: Context): ILockManager {
+        fun getInstance(ctx: Context): LockManager {
             return INSTANCE ?: synchronized(this) {
                 val entryPoint = EntryPointAccessors.fromApplication(ctx.applicationContext, LockManagerEntryPoint::class.java)
                 INSTANCE = entryPoint.getLockManager()
@@ -90,7 +90,7 @@ class LockManager @Inject constructor(intentFactory: IntentFactory, @Application
     override fun setUnlocked() = lockState.setUnlocked()
 }
 
-interface ILockManager {
+interface LockManager {
     fun isLockable(): Boolean
 
     fun lock()

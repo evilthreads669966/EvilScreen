@@ -20,7 +20,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.evilthreads.ActivityFinishedObserver
 import com.evilthreads.IntentFactory
 import com.evilthreads.lock.AppIconState
-import com.evilthreads.lock.ILockManager
+import com.evilthreads.lock.LockManager
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -54,7 +54,7 @@ internal class LockActivity: AppCompatActivity(){
     @Inject
     lateinit var launcherName: ComponentName
     @Inject
-    lateinit var lockMgr: ILockManager
+    lateinit var lockMgr: LockManager
     @Inject
     lateinit var appIconState: AppIconState
     @Inject
