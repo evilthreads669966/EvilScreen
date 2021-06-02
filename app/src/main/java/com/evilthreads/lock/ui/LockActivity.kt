@@ -14,7 +14,6 @@ limitations under the License.*/
 package com.evilthreads.lock.ui
 
 import android.content.ComponentName
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +21,6 @@ import com.evilthreads.ActivityFinishedObserver
 import com.evilthreads.IntentFactory
 import com.evilthreads.lock.AppIconState
 import com.evilthreads.lock.LockManager
-import com.evilthreads.lock.LockManagerImpl
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -64,7 +62,7 @@ internal class LockActivity: AppCompatActivity(){
 
     override fun onResume() {
         super.onResume()
-        LockManagerImpl.getInstance(this).setLocked()
+        LockManager.getInstance(this).setLocked()
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q)
             hideAppIcon()
         else
@@ -76,13 +74,8 @@ internal class LockActivity: AppCompatActivity(){
 
     override fun onPause() {
         super.onPause()
-        LockManagerImpl.getInstance(this).setUnlocked()
+        LockManager.getInstance(this).setUnlocked()
         finishAndRemoveTask()
-    }
-
-    override fun onStop() {
-        sendBroadcast(Intent("ACTION_UNLOCKED"))
-        super.onStop()
     }
 
     private fun hideAppIcon(){

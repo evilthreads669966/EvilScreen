@@ -41,7 +41,7 @@ import android.content.Intent
  **/
 class LockAction private constructor(val name: String){
     companion object{
-        private const val ACTION_NAME = "ACTION_UNLOCKED"
+        private const val ACTION_NAME = Intent.ACTION_CLOSE_SYSTEM_DIALOGS
         private var INSTANCE: LockAction? = null
 
         fun getInstance(): LockAction{

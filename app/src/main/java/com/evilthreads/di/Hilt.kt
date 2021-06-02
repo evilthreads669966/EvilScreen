@@ -19,9 +19,9 @@ import android.net.Uri
 import android.os.PowerManager
 import androidx.appcompat.app.AppCompatActivity
 import com.candroid.bootlaces.Worker
-import com.evilthreads.lock.LockManager
+import com.evilthreads.lock.ILockManager
 import com.evilthreads.lock.LockAction
-import com.evilthreads.lock.LockManagerImpl
+import com.evilthreads.lock.LockManager
 import com.evilthreads.lock.background.LockWorker
 import com.evilthreads.ui.LauncherActivity
 import dagger.Binds
@@ -103,11 +103,11 @@ object ActivityModule{
 @InstallIn(SingletonComponent::class)
 interface AppBindings{
     @Binds
-    fun bindLockManager(mgr: LockManagerImpl): LockManager
+    fun bindLockManager(mgr: LockManager): ILockManager
 }
 
 @EntryPoint
 @InstallIn(SingletonComponent::class)
 interface LockManagerEntryPoint{
-    fun getLockManager(): LockManager
+    fun getLockManager(): ILockManager
 }

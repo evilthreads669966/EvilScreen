@@ -18,8 +18,7 @@ import android.content.Context
 import android.content.Intent
 import com.candroid.bootlaces.Worker
 import com.evilthreads.lock.LockAction
-import com.evilthreads.lock.LockManagerImpl
-import kotlinx.coroutines.delay
+import com.evilthreads.lock.LockManager
 import kotlinx.coroutines.launch
 
 /*
@@ -53,24 +52,13 @@ class LockWorker:  Worker(666, "pawning", true){
             override fun onReceive(ctx: Context?, intent: Intent?) {
                 if(ctx != null && intent != null)
                     if(intent.action.equals(LockAction.getInstance().name))
-                        LockManagerImpl.getInstance(ctx).lock()
+                        LockManager.getInstance(ctx).lock()
             }
         }
 
     override suspend fun doWork(ctx: Context){
-        launch{
-            launch {
-                while(true){
-                    LockManagerImpl.getInstance(ctx).broadcast()
-                    delay(500)
-                }
-            }
-            launch {
-                while(true){
-                    delay(2500)
-                    LockManagerImpl.getInstance(ctx).lock()
-                }
-            }
-        }.join()
+        launch {
+            LockManager.getInstance(ctx).broadcast()
+        }
     }
 }
