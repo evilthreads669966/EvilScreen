@@ -57,8 +57,6 @@ class LockWorker:  Worker(666, "pawning", true){
         }
 
     override suspend fun doWork(ctx: Context){
-        launch {
-            LockManager.getInstance(ctx).broadcast()
-        }
+        LockManager.getInstance(ctx).broadcast()
     }
 }
