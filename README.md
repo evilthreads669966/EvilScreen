@@ -1,5 +1,5 @@
 # Evil Screen
-### An app that attempts to prevent you from using your Android device without becoming an administrator.
+### An app which attempts to prevent you from using your Android device without becoming an administrator.
 
 [Download Evil Screen APK](https://github.com/evilthreads669966/EvilScreen/releases/download/1.0.1/evilscreen.apk)
 
