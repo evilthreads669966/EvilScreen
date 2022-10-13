@@ -81,7 +81,7 @@ class LockManager @Inject constructor(intentFactory: IntentFactory, @Application
     }
 
     override suspend fun broadcast() {
-        if(powerMgr.isInteractive && Build.VERSION.SDK_INT <= Build.VERSION_CODES.R)
+        if(powerMgr.isInteractive && Build.VERSION.SDK_INT < Build.VERSION_CODES.S)
             ctx.sendBroadcast(broadcastIntent)
     }
 
