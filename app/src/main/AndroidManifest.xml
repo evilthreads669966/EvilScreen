@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EvilScreen">
-        <activity android:name="com.evilthreads.ui.LauncherActivity">
+        <activity android:name="com.evilthreads.ui.LauncherActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
